@@ -111,9 +111,9 @@ export class Game {
         else if (!this.paused) this.pause();
       }
     }
-    if ((code === 'Enter' || code === 'NumpadEnter') && this.overlays.length && this.overlays.at(-1).defaultAction) {
-      const o = this.overlays.at(-1);
-      o.onAction(o.defaultAction);
+    if (code === 'Enter' || code === 'NumpadEnter') {
+      const o = this.topScreen();
+      if (o && o.defaultAction && !(this.onNameInputEnd && !document.getElementById('nameBox').hidden)) o.onAction(o.defaultAction);
     }
     if (code === 'F2') this.debug = !this.debug;
   }
@@ -285,6 +285,7 @@ export class Game {
     s.defaultAction = 'mapDone';
     s.setText('nextStageText', 'Next up:\nStage ' + (this.stageIndex + 1) + ': ' + st.name);
     s.show('loadingTextGroup', false);
+    s.show('chooseHeader', false); // only shown when picking a start point
     s.setText('stageLabel', '');
     // chapter buttons are decoration here; show the reached ones in colour
     const chapters = [['angel', 'Andy'], ['lion', 'Leon'], ['angler', 'Eddie'], ['jd', 'JD'], ['orca', 'Orville']];

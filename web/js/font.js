@@ -33,7 +33,9 @@ export class BitmapFont {
       rowStarted = true;
     }
     const sp = this.glyphs.get(32);
-    this.spaceAdvance = sp ? sp.a + sp.w + sp.c : Math.max(doc.num('spaceWidth', 0), Math.round(this.height * 0.3));
+    // the original uses spaceWidth literally when a font has no space glyph
+    // (scoreFont: the HUD counter relies on this for its "NN   of   NN" layout)
+    this.spaceAdvance = sp ? sp.a + sp.w + sp.c : doc.num('spaceWidth', Math.round(this.height * 0.3));
   }
 
   static get(path) {
