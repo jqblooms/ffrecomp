@@ -268,7 +268,11 @@ def build(setup, out):
             alpha_name = os.path.join(d, "_" + f) + ".png"
             alpha = img.mode in ("RGBA", "LA") or "transparency" in img.info
             if ext == ".jpg" and alpha_name in files:
-                a = Image.open(io.BytesIO(files[alpha_name])).convert("L")
+                mask = Image.open(io.BytesIO(files[alpha_name]))
+                if mask.mode in ("RGBA", "LA") and mask.getchannel("A").getextrema()[0] < 255:
+                    a = mask.getchannel("A")  # mask stored in the alpha channel
+                else:
+                    a = mask.convert("L")  # usual case: grey-scale mask
                 img = img.convert("RGB")
                 if a.size != img.size:
                     a = a.resize(img.size)

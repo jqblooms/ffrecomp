@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#06283d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Feeding Frenzy Web</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="game" width="640" height="480" aria-label="Feeding Frenzy game area"></canvas>
+
+<div id="controls">
+  <button id="pauseBtn" class="ctl" hidden aria-label="Pause">II</button>
+  <button id="fsBtn" class="ctl" hidden aria-label="Fullscreen">⛶</button>
+  <button id="dashBtn" class="ctl dash" hidden aria-label="Dash">DASH</button>
+</div>
+
+<div id="loading" class="panel">
+  <h1>Feeding Frenzy</h1>
+  <div class="track"><div id="bar"></div></div>
+  <p id="loadlabel">Loading...</p>
+</div>
+
+<div id="setup" class="panel" hidden>
+  <h1>Game data not found</h1>
+  <p>This web port contains only the engine. The graphics, sound and level data
+  come from your own copy of the original game.</p>
+  <ol>
+    <li>Install <code>innoextract</code> and Python 3 with Pillow.</li>
+    <li>Run <code>python3 tools/extract_assets.py FeedingFrenzySetup.exe</code></li>
+    <li>Serve the <code>web/</code> folder and reload this page.</li>
+  </ol>
+</div>
+
+<div id="nameBox" hidden>
+  <label for="nameField">Your name</label>
+  <input id="nameField" maxlength="14" autocomplete="off" autocapitalize="words" enterkeyhint="done">
+  <button id="nameOk">Done</button>
+</div>
+
+<noscript>This game needs JavaScript.</noscript>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

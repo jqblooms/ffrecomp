@@ -1,0 +1,13 @@
+{
+  "name": "Feeding Frenzy Web",
+  "short_name": "Feeding Frenzy",
+  "description": "Browser port of Feeding Frenzy, running on the user's own game data.",
+  "start_url": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#04121d",
+  "theme_color": "#06283d",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
