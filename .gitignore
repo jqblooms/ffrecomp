@@ -1,0 +1,10 @@
+# Game data extracted from the user's own copy of the installer.
+# Never commit copyrighted assets or binaries.
+web/game/
+build/
+*.exe
+*.RWG
+*.saf
+__pycache__/
+node_modules/
+test-results/
